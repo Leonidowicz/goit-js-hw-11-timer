@@ -12,13 +12,16 @@ class CountdownTimer {
       secs: document.querySelector(`${this.selector} [data-value="secs"]`),
     };
   }
+
   updateDate() {
     this.intervalId = setInterval(() => {
       const time = this.targetDate - Date.now();
+
       if (time < 0) {
         clearInterval(this.intervalId);
         return;
       }
+
       this.getRefs().days.textContent = Math.floor(
         time / (1000 * 60 * 60 * 24)
       );
@@ -49,7 +52,6 @@ function setTime() {
     mils = a.target.valueAsNumber;
     console.log(`mils: ${a.target.valueAsNumber}`);
   });
-
   return newTime;
 }
 console.log(setTime());
